@@ -1,0 +1,16 @@
+###############################################################
+## Presence
+################################################################
+- id: lala_automation
+  alias: "Check sensor value and show notification"
+  trigger:
+    # Delayed action for router-based and Owntracks trackers that are not 100% reliable
+    - platform: numeric_state
+      entity_id:
+        - sensor.random_sensor
+      above: 10
+  action:
+    - service: notify.pushbullet
+      data:
+        message: "Your message goes here"
+        title: "Custom subject"
