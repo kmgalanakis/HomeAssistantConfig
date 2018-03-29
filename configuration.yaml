@@ -107,6 +107,7 @@ tts:
 # Cloud
 cloud:
 
+cover: !include cover.yaml
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml

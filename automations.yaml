@@ -1,16 +1,60 @@
-###############################################################
-## Presence
-################################################################
 - id: lala_automation
-  alias: "Check sensor value and show notification"
+  alias: Check sensor value and show notification
   trigger:
-    # Delayed action for router-based and Owntracks trackers that are not 100% reliable
-    - platform: numeric_state
-      entity_id:
-        - sensor.random_sensor
-      above: 10
+  - platform: numeric_state
+    entity_id:
+    - sensor.random_sensor
+    above: 10
   action:
-    - service: notify.pushbullet
-      data:
-        message: "Your message goes here"
-        title: "Custom subject"
+  - service: notify.pushbullet
+    data:
+      message: Your message goes here
+      title: Custom subject
+- id: open_front_door
+  alias: If front door is open, switch on kitchen lights
+  trigger:
+  - entity_id: binary_sensor.door_window_sensor_158d0001f3467a
+    from: 'off'
+    platform: state
+    to: 'on'
+  action:
+  - data:
+      message: The front door of the house was opened!
+      title: Door is open
+    service: notify.pushbullet
+- action:
+  - alias: ''
+    data:
+      entity_id: switch.sonoff_switch_02
+    service: switch.turn_on
+  - data:
+      message: Katerina's temperature changed!
+      title: Katerina's temperature
+    service: notify.pushbullet
+  - delay: 0:00:10
+  - data:
+      entity_id: switch.sonoff_switch_02
+    service: switch.turn_off
+  alias: Katerina's temperature
+  condition: []
+  id: '1522093475220'
+  trigger:
+  - above: '20'
+    below: '23'
+    entity_id: sensor.temperature_158d000149caa5
+    platform: numeric_state
+- action:
+  - data:
+      entity_id: switch.sonoff_switch_02
+    service: switch.turn_on
+  - delay: 0:00:10
+  - data:
+      entity_id: switch.sonoff_switch_02
+    service: switch.turn_off
+  alias: New Automation
+  condition: []
+  id: '1522095002279'
+  trigger:
+  - event_data: {}
+    event_type: ''
+    platform: event

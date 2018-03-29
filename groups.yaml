@@ -1,0 +1,27 @@
+living_room:
+    name: Living Room
+    view: no
+    entities:
+        - binary_sensor.door_window_sensor_158d0001f3467a
+office:
+    name: Office
+    view: no
+    entities:
+        - sensor.illumination_34ce0091de32
+        - light.yeelight_unknown_34ce00be27b3
+        - light.gateway_light_34ce0091de32
+        - switch.sonoff_switch_02
+        - cover.test
+katerina:
+    name: Katerina's
+    view: no
+    entities:
+        - sensor.temperature_158d000149caa5
+        - sensor.humidity_158d000149caa5
+uncategorized:
+    name: Uncategorized
+    view: no
+    entities:
+        - switch.sonoff_switch_01
+        - sensor.sonoff_switch_01_humidity
+        - sensor.sonoff_switch_01_temp
