@@ -1,5 +1,6 @@
 light.yeelight_unknown_34ce00be27b3:
   friendly_name: Office light
 cover.test:
-    display_class: blinds
-    friendly_name: Office Blinds
+  icon: mdi:blinds
+  display_class: blinds
+  friendly_name: Office Blinds

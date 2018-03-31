@@ -22,6 +22,10 @@
       message: The front door of the house was opened!
       title: Door is open
     service: notify.pushbullet
+  - data:
+      message: The front door of the house was opened!
+      title: Door is open
+    service: notify.mailgun
 - action:
   - alias: ''
     data:

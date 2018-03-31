@@ -13,7 +13,7 @@ office:
         - switch.sonoff_switch_02
         - cover.test
 katerina:
-    name: Katerina's
+    name: Katerina's Room
     view: no
     entities:
         - sensor.temperature_158d000149caa5
