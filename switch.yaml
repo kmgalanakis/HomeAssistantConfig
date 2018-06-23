@@ -14,3 +14,36 @@
   payload_on: "ON"
   payload_off: "OFF"
   retain: true
+- platform: mqtt
+  name: "Sonoff Switch 03"
+  command_topic: "cmnd/sonoff3/power"
+  state_topic: "stat/sonoff3/POWER"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  retain: true
+- platform: mqtt
+  name: "Sonoff Switch 04"
+  command_topic: "cmnd/sonoff4/power"
+  state_topic: "stat/sonoff4/POWER"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  retain: true
+- platform: mqtt
+  name: "SWITCH"
+  command_topic: "ha/switch1"
+  state_topic: "ha/switch1"
+  qos: 0
+  payload_on: "ON"
+  payload_off: "OFF"
+  optimistic:
+  retain: true
+- platform: mqtt
+  name: "ESP8266 Switch"
+  command_topic: "cmnd/sonoff99/power"
+  state_topic: "stat/sonoff99/POWER"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  retain: true

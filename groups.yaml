@@ -2,15 +2,18 @@ living_room:
     name: Living Room
     view: no
     entities:
+        - sensor.temperature_158d0001c1504f
+        - sensor.humidity_158d0001c1504f
         - binary_sensor.door_window_sensor_158d0001f3467a
 office:
     name: Office
     view: no
     entities:
+        - sensor.nodemcu_temperature_sensor
+        - sensor.nodemcu_humidity_sensor
         - sensor.illumination_34ce0091de32
-        - light.yeelight_unknown_34ce00be27b3
+        - light.yeelight_ceiling_34ce00be27b3
         - light.gateway_light_34ce0091de32
-        - switch.sonoff_switch_02
         - cover.test
 katerina:
     name: Katerina's Room
@@ -18,6 +21,11 @@ katerina:
     entities:
         - sensor.temperature_158d000149caa5
         - sensor.humidity_158d000149caa5
+kitchen:
+    name: Kitchen
+    view: no
+    entities:
+        - switch.sonoff_switch_02
 uncategorized:
     name: Uncategorized
     view: no
@@ -25,3 +33,4 @@ uncategorized:
         - switch.sonoff_switch_01
         - sensor.sonoff_switch_01_humidity
         - sensor.sonoff_switch_01_temp
+        - binary_sensor.door_window_sensor_158d0001dcaff1

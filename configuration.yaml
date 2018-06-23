@@ -23,11 +23,11 @@ panel_iframe:
   configurator:
     title: Configurator
     icon: mdi:wrench
-    url: http://hassio.local:3218
+    url: !secret configurator_url
   ide:
     title: IDE
     icon: mdi:code-braces
-    url: http://hassio.local:8321
+    url: !secret ide_url
     
 mqtt:
   broker: core-mosquitto
@@ -37,6 +37,11 @@ mqtt:
 mailgun:
   domain: !secret mailgun_domain
   api_key: !secret mailgun_key
+  
+# media_player:
+#   - platform: volumio
+#     host: 192.168.1.100
+#     port: 3000
   
 # Example configuration.yaml entry
 notify:
@@ -66,6 +71,9 @@ http:
   api_password: !secret http_password
   # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
   # base_url: example.duckdns.org:8123
+  base_url: !secret base_url
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem
 
 # Checks for available updates
 # Note: This component will send some information about your system to
@@ -102,19 +110,7 @@ weather:
   - platform: yweather
 
 # Weather prediction
-sensor: #!include sensor.yaml
-  - platform: mqtt
-    name: "Sonoff Switch 01 Temp"
-    state_topic: "tele/sonoff1/SENSOR"
-    value_template: "{{ value_json['SI7021'].Temperature }}"
-    unit_of_measurement: "°C"
-  - platform: mqtt
-    name: "Sonoff Switch 01 Humidity"
-    state_topic: "tele/sonoff1/SENSOR"
-    value_template: "{{ value_json['SI7021'].Humidity }}"
-    unit_of_measurement: "%"
-  - platform: yr
-  - platform: moon
+sensor: !include sensor.yaml
 
 # Text to speech
 tts:
@@ -127,3 +123,16 @@ cover: !include cover.yaml
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
+
+google_assistant:
+  project_id: !secret google_assistant_project_id
+  client_id: !secret google_assistant_client_id
+  access_token: !secret google_assistant_access_token
+  exposed_domains:
+    - switch
+    - light
+  entity_config:
+    switch.sonoff_switch_02:
+      name: Kitchen Counter Light
+      aliases:
+        - kitchen lights
