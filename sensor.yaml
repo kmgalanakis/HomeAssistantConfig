@@ -1,21 +1,21 @@
-- platform: mqtt
-  name: "Sonoff Switch 01 Temp"
-  state_topic: "tele/sonoff1/SENSOR"
-  value_template: "{{ value_json['SI7021'].Temperature }}"
-  unit_of_measurement: "°C"
-- platform: mqtt
-  name: "Sonoff Switch 01 Humidity"
-  state_topic: "tele/sonoff1/SENSOR"
-  value_template: "{{ value_json['SI7021'].Humidity }}"
-  unit_of_measurement: "%"
-- platform: mqtt
-  name: "NodeMCU Temperature Sensor"
-  state_topic: "tele/sonoff99/SENSOR"
-  value_template: "{{ value_json['DHT11'].Temperature }}"
-  unit_of_measurement: "°C"
-- platform: mqtt
-  name: "NodeMCU Humidity Sensor"
-  state_topic: "tele/sonoff99/SENSOR"
-  value_template: "{{ value_json['DHT11'].Humidity }}"
-  unit_of_measurement: "%"
-- platform: yr
+# - platform: mqtt
+#   name: "Sonoff Switch 01 Temp"
+#   state_topic: "tele/sonoff1/SENSOR"
+#   value_template: "{{ value_json['SI7021'].Temperature }}"
+#   unit_of_measurement: "°C"
+# - platform: mqtt
+#   name: "Sonoff Switch 01 Humidity"
+#   state_topic: "tele/sonoff1/SENSOR"
+#   value_template: "{{ value_json['SI7021'].Humidity }}"
+#   unit_of_measurement: "%"
+# - platform: mqtt
+#   name: "NodeMCU Temperature Sensor"
+#   state_topic: "tele/sonoff99/SENSOR"
+#   value_template: "{{ value_json['DHT11'].Temperature }}"
+#   unit_of_measurement: "°C"
+# - platform: mqtt
+#   name: "NodeMCU Humidity Sensor"
+#   state_topic: "tele/sonoff99/SENSOR"
+#   value_template: "{{ value_json['DHT11'].Humidity }}"
+#   unit_of_measurement: "%"
+# - platform: yr

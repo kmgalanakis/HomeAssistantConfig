@@ -106,8 +106,8 @@ light: !include light.yaml
 
 switch: !include switch.yaml
 
-weather:
-  - platform: yweather
+#weather:
+#  - platform: yweather
 
 # Weather prediction
 sensor: !include sensor.yaml
@@ -123,16 +123,3 @@ cover: !include cover.yaml
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
-
-google_assistant:
-  project_id: !secret google_assistant_project_id
-  client_id: !secret google_assistant_client_id
-  access_token: !secret google_assistant_access_token
-  exposed_domains:
-    - switch
-    - light
-  entity_config:
-    switch.sonoff_switch_02:
-      name: Kitchen Counter Light
-      aliases:
-        - kitchen lights

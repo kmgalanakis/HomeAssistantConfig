@@ -5,6 +5,8 @@ living_room:
         - sensor.temperature_158d0001c1504f
         - sensor.humidity_158d0001c1504f
         - binary_sensor.door_window_sensor_158d0001f3467a
+        - light.yeelight_rgb_7c49eb14f5fd
+        - switch.blitzwolf_shp2
 office:
     name: Office
     view: no
@@ -26,11 +28,11 @@ kitchen:
     view: no
     entities:
         - switch.sonoff_switch_02
-uncategorized:
-    name: Uncategorized
-    view: no
-    entities:
-        - switch.sonoff_switch_01
-        - sensor.sonoff_switch_01_humidity
-        - sensor.sonoff_switch_01_temp
-        - binary_sensor.door_window_sensor_158d0001dcaff1
+# uncategorized:
+#     name: Uncategorized
+#     view: no
+#     entities:
+#         - switch.sonoff_switch_01
+#         - sensor.sonoff_switch_01_humidity
+#         - sensor.sonoff_switch_01_temp
+#         - binary_sensor.door_window_sensor_158d0001dcaff1
