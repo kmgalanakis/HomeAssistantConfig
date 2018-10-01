@@ -28,6 +28,19 @@ kitchen:
     view: no
     entities:
         - switch.sonoff_switch_02
+stats:
+    name: Stats
+    view: no
+    entities:
+        - sensor.fireplace_lamp_consumption_current
+        - sensor.fireplace_lamp_consumption_voltage
+        - sensor.fireplace_lamp_consumption_today
+        - sensor.fireplace_lamp_consumption_yesterday
+        - sensor.fireplace_lamp_consumption_total
+        - sensor.door_sensor_1_battery_level
+        - sensor.door_sensor_2_battery_level
+        - sensor.temperature_sensor_1_battery_level
+        - sensor.temperature_sensor_2_battery_level
 # uncategorized:
 #     name: Uncategorized
 #     view: no

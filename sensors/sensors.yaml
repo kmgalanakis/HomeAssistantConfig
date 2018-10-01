@@ -1,0 +1,46 @@
+- platform: mqtt
+  name: "Fireplace Lamp Consumption Today"
+  state_topic: "tele/bwshp2/SENSOR"
+  value_template: "{{ value_json['ENERGY'].Today }}"
+  unit_of_measurement: "kWh"
+- platform: mqtt
+  name: "Fireplace Lamp Consumption Yesterday"
+  state_topic: "tele/bwshp2/SENSOR"
+  value_template: "{{ value_json['ENERGY'].Yesterday }}"
+  unit_of_measurement: "kWh"
+- platform: mqtt
+  name: "Fireplace Lamp Consumption Total"
+  state_topic: "tele/bwshp2/SENSOR"
+  value_template: "{{ value_json['ENERGY'].Total }}"
+  unit_of_measurement: "kWh"
+- platform: mqtt
+  name: "Fireplace Lamp Consumption Voltage"
+  state_topic: "tele/bwshp2/SENSOR"
+  value_template: "{{ value_json['ENERGY'].Voltage }}"
+  unit_of_measurement: "V"
+- platform: mqtt
+  name: "Fireplace Lamp Consumption Current"
+  state_topic: "tele/bwshp2/SENSOR"
+  value_template: "{{ value_json['ENERGY'].Current }}"
+  unit_of_measurement: "A"
+# - platform: mqtt
+#   name: "Sonoff Switch 01 Temp"
+#   state_topic: "tele/sonoff1/SENSOR"
+#   value_template: "{{ value_json['SI7021'].Temperature }}"
+#   unit_of_measurement: "°C"
+# - platform: mqtt
+#   name: "Sonoff Switch 01 Humidity"
+#   state_topic: "tele/sonoff1/SENSOR"
+#   value_template: "{{ value_json['SI7021'].Humidity }}"
+#   unit_of_measurement: "%"
+# - platform: mqtt
+#   name: "NodeMCU Temperature Sensor"
+#   state_topic: "tele/sonoff99/SENSOR"
+#   value_template: "{{ value_json['DHT11'].Temperature }}"
+#   unit_of_measurement: "°C"
+# - platform: mqtt
+#   name: "NodeMCU Humidity Sensor"
+#   state_topic: "tele/sonoff99/SENSOR"
+#   value_template: "{{ value_json['DHT11'].Humidity }}"
+#   unit_of_measurement: "%"
+# - platform: yr

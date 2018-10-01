@@ -2,5 +2,6 @@
 !*.yaml
 !scenes
 !.gitignore
+!sensors
 secrets.yaml
 known_devices.yaml

@@ -28,6 +28,10 @@ panel_iframe:
     title: IDE
     icon: mdi:code-braces
     url: !secret ide_url
+  noderred:
+    title: Node Red
+    icon: mdi:shuffle-variant
+    url: !secret node_red_url
     
 mqtt:
   broker: core-mosquitto
@@ -110,7 +114,8 @@ switch: !include switch.yaml
 #  - platform: yweather
 
 # Weather prediction
-sensor: !include sensor.yaml
+#sensor: !include sensor.yaml
+sensor: !include_dir_merge_list sensors/
 
 # Text to speech
 tts:
@@ -123,3 +128,11 @@ cover: !include cover.yaml
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
+
+device_tracker:
+  - platform: nmap_tracker
+    hosts: 
+      - 192.168.1.24
+      - 192.168.1.29
+    home_interval: 10
+    exclude: 192.168.1.104

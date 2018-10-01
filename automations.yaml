@@ -14,69 +14,69 @@
       message: The front door of the house was opened!
       title: Door is open
     service: notify.mailgun
-# - id: lala_automation
-#   alias: Check sensor value and show notification
+- id: restart_home_assistant
+  alias: 2. Restart Home Assistant
+  trigger:
+  - platform: time
+    at: 03:00:00
+  condition:
+  - condition: time
+    weekday:
+    - sun
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+    - sat
+  action:
+  - service: homeassistant.restart
+- id: backup_home_assistant
+  alias: 3. Backup Home Assistant
+  trigger:
+  - at: 04:00:00
+    platform: time
+  condition:
+  - condition: time
+    weekday:
+    - sun
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+    - sat
+  action:
+  - alias: Backup Home Assistant
+    data:
+      name: Automated Backup {{ now().strftime('%Y-%m-%d') }}
+    service: hassio.snapshot_full
+  - delay: '00:20'
+  - alias: Upload Home Assistant Backup
+    data:
+      addon: 7be23ff5_dropbox_sync
+      input:
+        command: upload
+    service: hassio.addon_stdin
+# - id: upload_home_assistant_backup
+#   alias: 4. Upload Home Assistant Backup
 #   trigger:
-#   - above: '10'
-#     entity_id:
-#     - sensor.random_sensor
-#     platform: numeric_state
-#   action:
-#   - data:
-#       message: Your message goes here
-#       title: Custom subject
-#     service: notify.pushbullet
-# - action:
-#   - alias: ''
-#     data:
-#       entity_id: switch.sonoff_switch_02
-#     service: switch.turn_on
-#   - data:
-#       message: Katerina's temperature changed!
-#       title: Katerina's temperature
-#     service: notify.pushbullet
-#   - delay: 0:00:10
-#   - data:
-#       entity_id: switch.sonoff_switch_02
-#     service: switch.turn_off
-#   alias: Katerina's temperature
-#   condition: []
-#   id: '1522093475220'
-#   trigger:
-#   - above: '20'
-#     below: '23'
-#     entity_id: sensor.temperature_158d000149caa5
-#     platform: numeric_state
-# - action:
-#   - data:
-#       entity_id: switch.sonoff_switch_02
-#     service: switch.turn_on
-#   - delay: 0:00:10
-#   - data:
-#       entity_id: switch.sonoff_switch_02
-#     service: switch.turn_off
-#   alias: Leaving Home
+#   - at: 04:30:00
+#     platform: time
 #   condition:
-#   - condition: state
-#     entity_id: switch.sonoff_switch_02
-#     state: 'off'
-#   id: '1522095002279'
-#   trigger:
-#   - entity_id: binary_sensor.door_window_sensor_158d0001f3467a
-#     from: 'off'
-#     platform: state
-#     to: 'on'
-# - id: '1523467488520'
-#   alias: On door sensor open turn on lamp
-#   trigger:
-#   - entity_id: binary_sensor.door_window_sensor_158d0001dcaff1
-#     from: 'off'
-#     platform: state
-#     to: 'on'
-#   condition: []
+#   - condition: time
+#     weekday:
+#     - sun
+#     - mon
+#     - tue
+#     - wed
+#     - thu
+#     - fri
+#     - sat
 #   action:
-#   - alias: ''
+#   - alias: Upload Home Assistant Backup
 #     data:
-#       entity_id: light.yeelight_white_f0b429a9239a
-#       mode: normal
-#     service: light.yeelight_set_mode
+#       addon: 7be23ff5_dropbox_sync
+#       input:
+#         command: upload
+#     service: hassio.addon_stdin
