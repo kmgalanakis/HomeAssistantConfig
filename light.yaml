@@ -11,3 +11,8 @@
 #  devices:
 #      192.168.1.25:
 #        name: Living Room Floor Lamp
+
+# - platform: yeelight
+#   devices:
+#       192.168.1.9:
+#         name: Desk Lamp

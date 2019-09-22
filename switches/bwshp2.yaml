@@ -1,0 +1,24 @@
+- platform: mqtt
+  name: "Blitzwolf SHP2"
+  command_topic: "cmnd/bwshp2/power"
+  state_topic: "stat/bwshp2/POWER"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  retain: false
+- platform: mqtt
+  name: "Blitzwolf SHP2 #2"
+  command_topic: "cmnd/bwshp2b/power"
+  state_topic: "stat/bwshp2b/POWER"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  retain: false
+- platform: mqtt
+  name: "Blitzwolf SHP2 #3"
+  command_topic: "cmnd/bwshp2c/power"
+  state_topic: "stat/bwshp2c/POWER"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  retain: false

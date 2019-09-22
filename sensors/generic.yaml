@@ -1,0 +1,29 @@
+- platform: time_date
+  display_options:
+    - 'date_time'
+- platform: command_line
+  name: CPU Temperature
+  command: "cat /sys/class/thermal/thermal_zone0/temp"
+  # If errors occur, remove degree symbol below
+  unit_of_measurement: "°C"
+  value_template: '{{ value | multiply(0.001) | round(1) }}'
+- platform: systemmonitor
+  resources:
+    - type: memory_free
+    - type: load_1m
+- platform: mitemp_bt
+  name: 'Mija_Temperature_1'
+  force_update: true
+  mac: '58:2D:34:31:A7:A3'
+  monitored_conditions:
+    - temperature
+    - humidity
+    - battery
+- platform: mitemp_bt
+  name: 'Mija_Temperature_2'
+  force_update: true
+  mac: '58:2D:34:35:CF:2D'
+  monitored_conditions:
+    - temperature
+    - humidity
+    - battery

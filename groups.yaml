@@ -1,6 +1,13 @@
+generic:
+    name: Generic
+    view: no
+    control: hidden # hides the group switch
+    entities:
+        - sensor.date_time
 living_room:
     name: Living Room
     view: no
+    control: hidden # hides the group switch
     entities:
         - sensor.temperature_158d0001c1504f
         - sensor.humidity_158d0001c1504f
@@ -10,19 +17,21 @@ living_room:
 office:
     name: Office
     view: no
+    control: hidden # hides the group switch
     entities:
-        - sensor.nodemcu_temperature_sensor
-        - sensor.nodemcu_humidity_sensor
+        # - sensor.nodemcu_temperature_sensor
+        # - sensor.nodemcu_humidity_sensor
         - sensor.illumination_34ce0091de32
         - light.yeelight_ceiling_34ce00be27b3
         - light.gateway_light_34ce0091de32
-        - cover.test
+        # - cover.test
 katerina:
     name: Katerina's Room
     view: no
     entities:
         - sensor.temperature_158d000149caa5
         - sensor.humidity_158d000149caa5
+        - switch.blitzwolf_shp2_2
 kitchen:
     name: Kitchen
     view: no
@@ -41,6 +50,16 @@ stats:
         - sensor.door_sensor_2_battery_level
         - sensor.temperature_sensor_1_battery_level
         - sensor.temperature_sensor_2_battery_level
+        - sensor.katerina_s_radiator_consumption_current
+        - sensor.katerina_s_radiator_consumption_voltage
+        - sensor.katerina_s_radiator_consumption_today
+        - sensor.katerina_s_radiator_consumption_yesterday
+        - sensor.katerina_s_radiator_consumption_total
+hassiq:
+    name: HassIQ
+    view: no
+    entities:
+        - switch.sonoff_switch_03
 # uncategorized:
 #     name: Uncategorized
 #     view: no

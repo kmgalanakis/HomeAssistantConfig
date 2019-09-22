@@ -3,5 +3,7 @@
 !scenes
 !.gitignore
 !sensors
+!themes
+!switches
 secrets.yaml
 known_devices.yaml

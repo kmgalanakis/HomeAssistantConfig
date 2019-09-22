@@ -1,10 +1,11 @@
-- id: open_front_door
-  alias: 1. Front door opened
+- id: '1560007186402'
+  alias: 01. Front door opened
   trigger:
   - entity_id: binary_sensor.door_window_sensor_158d0001f3467a
     from: 'off'
     platform: state
     to: 'on'
+  condition: []
   action:
   - data:
       message: The front door of the house was opened!
@@ -15,10 +16,10 @@
       title: Door is open
     service: notify.mailgun
 - id: restart_home_assistant
-  alias: 2. Restart Home Assistant
+  alias: 02. Restart Home Assistant
   trigger:
-  - platform: time
-    at: 03:00:00
+  - at: 03:00:00
+    platform: time
   condition:
   - condition: time
     weekday:
@@ -32,7 +33,7 @@
   action:
   - service: homeassistant.restart
 - id: backup_home_assistant
-  alias: 3. Backup Home Assistant
+  alias: 03. Backup Home Assistant
   trigger:
   - at: 04:00:00
     platform: time
@@ -51,32 +52,142 @@
     data:
       name: Automated Backup {{ now().strftime('%Y-%m-%d') }}
     service: hassio.snapshot_full
-  - delay: '00:20'
+  - delay: 00:20
   - alias: Upload Home Assistant Backup
     data:
       addon: 7be23ff5_dropbox_sync
       input:
         command: upload
     service: hassio.addon_stdin
-# - id: upload_home_assistant_backup
-#   alias: 4. Upload Home Assistant Backup
-#   trigger:
-#   - at: 04:30:00
-#     platform: time
-#   condition:
-#   - condition: time
-#     weekday:
-#     - sun
-#     - mon
-#     - tue
-#     - wed
-#     - thu
-#     - fri
-#     - sat
-#   action:
-#   - alias: Upload Home Assistant Backup
-#     data:
-#       addon: 7be23ff5_dropbox_sync
-#       input:
-#         command: upload
-#     service: hassio.addon_stdin
+- id: katerina_s_heating_on
+  alias: 04. Turn Katerina's heating on
+  trigger:
+  - at: '20:30'
+    platform: time
+  condition: []
+  action:
+  - data:
+      entity_id: switch.blitzwolf_shp2_2
+    service: switch.turn_on
+- id: katerina_s_heating_off
+  alias: 05. Turn Katerina's heating off
+  trigger:
+  - at: '7:00'
+    platform: time
+  condition: []
+  action:
+  - data:
+      entity_id: switch.blitzwolf_shp2_2
+    service: switch.turn_off
+- id: '1554455221208'
+  alias: 06. Espresso Machine ready notification
+  trigger:
+  - entity_id: switch.blitzwolf_shp2_3
+    for: 00:15:00
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      message: TADA!
+      title: Espresso machine is ready!
+    service: notify.mailgun
+- id: '1556826931631'
+  alias: 07. Tent Down
+  trigger:
+  - entity_id: input_select.tent
+    platform: state
+    to: Down
+  condition: []
+  action:
+  - data:
+      host: 192.168.1.4
+      packet: sgD4AaIwDRYOFhoLDRcNFxkLGQsZCw4XGQsNFw0XDhYOFhkLDhcNFxkLDhYZCw4WDhYZCxkMGQsOFhkLDhYOFg4WDhgZCw4WDhYZCxkLDhcNFxkLGQABIaEvDhcNFxkLDRcOFhkLGQsZDA4WGQsOFg4WDhcNFhsLDRcOFhoKDhYaCw0XDRcZCxkMGQsNFxkLDhYOFg4WDhYZDA0XDhYZCxkLDhYOFhoKGgABIaIvDhYOFxkLDRcOFhkLGQsZDA0XGQsOFg4WDhYOFhkLDhcOFhkLDhYZCw4WDhYZCxoLGQsOFhoKDhYOFg4WDhcZCw4WDhgZChoLDRcNFxkLGQABKKEvDhYOFhoKDhcNFxkLGQsZDA0XGQsOFg0XDhYOFhkLDhcNGBkLDhYZCw4WDhcZChoLGQsOFhkLDhcNFg4XDRcZCw4WDhYaChkLDhcNFxkLGQABIaExDhYOFhkLDhYOFhoKGgsZCw4WGQsOFw0XDRcNFxkLDRcOFhoLDRcZCw0XDhYZCxkMGQsNFxkLDhYOFg4WDhYZDA0XDRcZCxkLDxYOFhoKGgABIaEvDhYOFhoKDhcNFxkLGQsZDA0XGQsNFw0XDhYOFhkLDhcOFhkLDhYaCw4WDhcZCxkLGgoOFhoKDhcOFg4WDRcZDA0XDRcZCxkLDRcOFhkLGgAF3A==
+    service: broadlink.send
+- id: '1556826979996'
+  alias: 08. Tent stop
+  trigger:
+  - entity_id: input_select.tent
+    platform: state
+    to: Stop
+  condition: []
+  action:
+  - data:
+      host: 192.168.1.4
+      packet: sgD8AKAwDhYOFhoKDhcNFxkLGgsZCw4WGgsNFw0XDRcNFxkLDhcNFxkLDRcZCw0XDhYZCxkMGQsNFxkLDhYOFg4WDhYZDA0XGQsNFxkLDhYZCw4WGQABI6AwDhYOFhkLDhYOFhoKGgoaCw4WGQsOFw0WDhcNFxkLDRcOFhkLDhYZCw4XDRcZCxkLGQsOFxkMDRcNFw0XDRcZCw4WGQsOFhoKDhcZCw0XGQABIaEwDRcNFxkLDRcNFxkLGQsZDA0XGgsNFw0XDRcOFhkLDhcOFhkLDhYZCw4WDhYZCxoLGQsOFhoKDhYOFg4WDhYaCw4WGQsOFhkLDhYaCw0XGQAF3AAAAAAAAAAAAAAAAA==
+    service: broadlink.send
+- id: '1556827356768'
+  alias: 09. Tent Up
+  trigger:
+  - entity_id: input_select.tent
+    platform: state
+    to: Up
+  condition: []
+  action:
+  - data:
+      host: 192.168.1.4
+      packet: sgD8AJ4yDBgMGBgMDBgMGBgNFw0XDQwYGAwMGQwYDBgMFxgNDBgMGBgMDRgXDA0YDBgXDRgMGA0MGRgMDBgMGA0XDBgYDQwYDBgMGBgMDBgMGAwYGAABI58xDBgNFxgNDBgMGBgMFw0YDQwZGAwMGAwYDBgMGBgMDBkMGBgMDBgYDA0YDBgXDRcNGAwMGBgNDBgMGAwYDBgYDAwYDBgMGRcNDBgMGAwYGAABJJ4yDBgMGBgMDBgMGBgMGAwYDQwYGAwMGQwYDBgMGBcNDBgNFxgMDRgXDQwYDBgYDBgNFw0MGBgMDBgNGAwYDBgYDQwYDBgMGBgMDBgMGAwYGAAF3AAAAAAAAAAAAAAAAA==
+    service: broadlink.send
+- id: '1561528093440'
+  alias: 10. Tent down in the morning
+  trigger:
+  - at: 07:00
+    platform: time
+  condition: []
+  action:
+  - data:
+      host: 192.168.1.4
+      packet: sgD4AaIwDRYOFhoLDRcNFxkLGQsZCw4XGQsNFw0XDhYOFhkLDhcNFxkLDhYZCw4WDhYZCxkMGQsOFhkLDhYOFg4WDhgZCw4WDhYZCxkLDhcNFxkLGQABIaEvDhcNFxkLDRcOFhkLGQsZDA4WGQsOFg4WDhcNFhsLDRcOFhoKDhYaCw0XDRcZCxkMGQsNFxkLDhYOFg4WDhYZDA0XDhYZCxkLDhYOFhoKGgABIaIvDhYOFxkLDRcOFhkLGQsZDA0XGQsOFg4WDhYOFhkLDhcOFhkLDhYZCw4WDhYZCxoLGQsOFhoKDhYOFg4WDhcZCw4WDhgZChoLDRcNFxkLGQABKKEvDhYOFhoKDhcNFxkLGQsZDA0XGQsOFg0XDhYOFhkLDhcNGBkLDhYZCw4WDhcZChoLGQsOFhkLDhcNFg4XDRcZCw4WDhYaChkLDhcNFxkLGQABIaExDhYOFhkLDhYOFhoKGgsZCw4WGQsOFw0XDRcNFxkLDRcOFhoLDRcZCw0XDhYZCxkMGQsNFxkLDhYOFg4WDhYZDA0XDRcZCxkLDxYOFhoKGgABIaEvDhYOFhoKDhcNFxkLGQsZDA0XGQsNFw0XDhYOFhkLDhcOFhkLDhYaCw4WDhcZCxkLGgoOFhoKDhcOFg4WDRcZDA0XDRcZCxkLDRcOFhkLGgAF3A==
+    service: broadlink.send
+- id: '1565853286160'
+  alias: 11. Tent up in the afternoon
+  trigger:
+  - at: '13:00'
+    platform: time
+  condition: []
+  action:
+  - data:
+      host: 192.168.1.4
+      packet: sgD8AJ4yDBgMGBgMDBgMGBgNFw0XDQwYGAwMGQwYDBgMFxgNDBgMGBgMDRgXDA0YDBgXDRgMGA0MGRgMDBgMGA0XDBgYDQwYDBgMGBgMDBgMGAwYGAABI58xDBgNFxgNDBgMGBgMFw0YDQwZGAwMGAwYDBgMGBgMDBkMGBgMDBgYDA0YDBgXDRcNGAwMGBgNDBgMGAwYDBgYDAwYDBgMGRcNDBgMGAwYGAABJJ4yDBgMGBgMDBgMGBgMGAwYDQwYGAwMGQwYDBgMGBcNDBgNFxgMDRgXDQwYDBgYDBgNFw0MGBgMDBgNGAwYDBgYDQwYDBgMGBgMDBgMGAwYGAAF3AAAAAAAAAAAAAAAAA==
+    service: broadlink.send
+- id: '1569049708322'
+  alias: 12. Single click to toggle Dining Room Lamp
+  trigger:
+  - event_data:
+      click_type: single
+      entity_id: binary_sensor.switch_158d0001d88784
+    event_type: xiaomi_aqara.click
+    platform: event
+  condition: []
+  action:
+  - alias: ''
+    data:
+      entity_id: light.yeelight_color1_7c49eb14f5fd
+    service: light.toggle
+- id: '1569050898658'
+  alias: 13. Double click to toggleLiving Room Lamp
+  trigger:
+  - event_data:
+      click_type: double
+      entity_id: binary_sensor.switch_158d0001d88784
+    event_type: xiaomi_aqara.click
+    platform: event
+  condition: []
+  action:
+  - data:
+      entity_id: switch.blitzwolf_shp2
+    service: switch.toggle
+- id: '1569175182967'
+  alias: 14. Long press to toggle Kitchen Counter Lights
+  trigger:
+  - event_data:
+      click_type: long_click_press
+      entity_id: binary_sensor.switch_158d0001d88784
+    event_type: xiaomi_aqara.click
+    platform: event
+  condition: []
+  action:
+  - data:
+      entity_id: switch.sonoff_switch_02
+    service: switch.toggle

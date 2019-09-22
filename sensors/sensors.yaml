@@ -1,4 +1,15 @@
 - platform: mqtt
+  name: "Sonoff Switch 01 Temp"
+  state_topic: "tele/sonoff1/SENSOR"
+  value_template: "{{ value_json['SI7021'].Temperature }}"
+  unit_of_measurement: "°C"
+- platform: mqtt
+  name: "Sonoff Switch 01 Humidity"
+  state_topic: "tele/sonoff1/SENSOR"
+  value_template: "{{ value_json['SI7021'].Humidity }}"
+  unit_of_measurement: "%"
+
+- platform: mqtt
   name: "Fireplace Lamp Consumption Today"
   state_topic: "tele/bwshp2/SENSOR"
   value_template: "{{ value_json['ENERGY'].Today }}"
@@ -23,16 +34,98 @@
   state_topic: "tele/bwshp2/SENSOR"
   value_template: "{{ value_json['ENERGY'].Current }}"
   unit_of_measurement: "A"
-# - platform: mqtt
-#   name: "Sonoff Switch 01 Temp"
-#   state_topic: "tele/sonoff1/SENSOR"
-#   value_template: "{{ value_json['SI7021'].Temperature }}"
-#   unit_of_measurement: "°C"
-# - platform: mqtt
-#   name: "Sonoff Switch 01 Humidity"
-#   state_topic: "tele/sonoff1/SENSOR"
-#   value_template: "{{ value_json['SI7021'].Humidity }}"
-#   unit_of_measurement: "%"
+- platform: mqtt
+  name: "Fireplace Lamp Power"
+  state_topic: "tele/bwshp2/SENSOR"
+  value_template: "{{ value_json['ENERGY'].Power }}"
+  unit_of_measurement: "W"
+
+- platform: mqtt
+  name: "Katerina's Radiator Consumption Today"
+  state_topic: "tele/bwshp2b/SENSOR"
+  value_template: "{{ value_json['ENERGY'].Today }}"
+  unit_of_measurement: "kWh"
+- platform: mqtt
+  name: "Katerina's Radiator Consumption Yesterday"
+  state_topic: "tele/bwshp2b/SENSOR"
+  value_template: "{{ value_json['ENERGY'].Yesterday }}"
+  unit_of_measurement: "kWh"
+- platform: mqtt
+  name: "Katerina's Radiator Consumption Total"
+  state_topic: "tele/bwshp2b/SENSOR"
+  value_template: "{{ value_json['ENERGY'].Total }}"
+  unit_of_measurement: "kWh"
+- platform: mqtt
+  name: "Katerina's Radiator Consumption Voltage"
+  state_topic: "tele/bwshp2b/SENSOR"
+  value_template: "{{ value_json['ENERGY'].Voltage }}"
+  unit_of_measurement: "V"
+- platform: mqtt
+  name: "Katerina's Radiator Consumption Current"
+  state_topic: "tele/bwshp2b/SENSOR"
+  value_template: "{{ value_json['ENERGY'].Current }}"
+  unit_of_measurement: "A"
+- platform: mqtt
+  name: "Katerina's Radiator Power"
+  state_topic: "tele/bwshp2b/SENSOR"
+  value_template: "{{ value_json['ENERGY'].Power }}"
+  unit_of_measurement: "W"
+- platform: mqtt
+  name: "Katerina's Radiator Friendly Name"
+  state_topic: "stat/bwshp2b/STATUS"
+  value_template: "{{ value_json['Status'].FriendlyName[0] }}"
+  unit_of_measurement: ""
+- platform: mqtt
+  name: "Katerina's Radiator IP"
+  state_topic: "stat/bwshp2b/STATUS5"
+  value_template: "{{ value_json['StatusNET'].IPAddress }}"
+  unit_of_measurement: ""
+- platform: mqtt
+  name: "Katerina's Radiator Hostname"
+  state_topic: "stat/bwshp2b/STATUS5"
+  value_template: "{{ value_json['StatusNET'].Hostname }}"
+  unit_of_measurement: ""
+- platform: mqtt
+  name: "Katerina's Radiator Topic"
+  state_topic: "stat/bwshp2b/STATUS"
+  value_template: "{{ value_json['Status'].Topic }}"
+  unit_of_measurement: ""
+
+- platform: mqtt
+  name: "Esspresso Machine Consumption Today"
+  state_topic: "tele/bwshp2c/SENSOR"
+  value_template: "{{ value_json['ENERGY'].Today }}"
+  unit_of_measurement: "kWh"
+- platform: mqtt
+  name: "Esspresso Machine Consumption Yesterday"
+  state_topic: "tele/bwshp2c/SENSOR"
+  value_template: "{{ value_json['ENERGY'].Yesterday }}"
+  unit_of_measurement: "kWh"
+- platform: mqtt
+  name: "Esspresso Machine Consumption Total"
+  state_topic: "tele/bwshp2c/SENSOR"
+  value_template: "{{ value_json['ENERGY'].Total }}"
+  unit_of_measurement: "kWh"
+- platform: mqtt
+  name: "Esspresso Machine Consumption Voltage"
+  state_topic: "tele/bwshp2c/SENSOR"
+  value_template: "{{ value_json['ENERGY'].Voltage }}"
+  unit_of_measurement: "V"
+- platform: mqtt
+  name: "Esspresso Machine Consumption Current"
+  state_topic: "tele/bwshp2c/SENSOR"
+  value_template: "{{ value_json['ENERGY'].Current }}"
+  unit_of_measurement: "A"
+- platform: mqtt
+  name: "Esspresso Machine Power"
+  state_topic: "tele/bwshp2c/SENSOR"
+  value_template: "{{ value_json['ENERGY'].Power }}"
+  unit_of_measurement: "W"
+- platform: mqtt
+  name: "Esspresso Machine Socket IP"
+  state_topic: "stat/bwshp2c/STATUS5"
+  value_template: "{{ value_json['StatusNET'].IPAddress }}"
+  unit_of_measurement: ""
 # - platform: mqtt
 #   name: "NodeMCU Temperature Sensor"
 #   state_topic: "tele/sonoff99/SENSOR"

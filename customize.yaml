@@ -1,35 +1,31 @@
-## Lights
-light.yeelight_ceiling_34ce00be27b3:
-  friendly_name: Office Ceiling Light
-  icon: mdi:ceiling-light
-light.yeelight_rgb_7c49eb14f5fd:
-  friendly_name: Dining Room Floor Lamp
-  icon: mdi:floor-lamp
-# light.yeelight_white_f0b429a9239a:
-#  friendly_name: Xiaomi Led Lamp
-
-## Switched
-switch.blitzwolf_shp2:
-  friendly_name: Living Room Fireplace Floor Lamp
-  icon: mdi:floor-lamp
+switch.blitzwolf_shp2_3:
+  friendly_name: Epresso machine
+  icon: mdi:coffee
+switch.blitzwolf_shp2_2:
+  friendly_name: OSMC Raspberry Pi
+  icon: mdi:raspberry-pi
 switch.sonoff_switch_02:
-  friendly_name: Kitchen Counter Lights
-  icon: mdi:lightbulb
-
-## Sensors
+  friendly_name: Kitchen counter lights
+  icon: mdi:lamp
+switch.sonoff_switch_03:
+  friendly_name: Desk light
+  icon: mdi:lamp
+switch.blitzwolf_shp2:
+  friendly_name: Living room floor lamp
+  icon: mdi:floor-lamp
+light.yeelight_color1_7c49eb14f5fd:
+  friendly_name: Dining room floor lamp
+  icon: mdi:floor-lamp
 binary_sensor.door_window_sensor_158d0001f3467a:
-  friendly_name: Front Door
+  friendly_name: Front door
+  icon: mdi:door
 sensor.temperature_158d0001c1504f:
-  friendly_name: Temperature (Living Room)
+  friendly_name: Living room temperature
 sensor.humidity_158d0001c1504f:
-  friendly_name: Humidity (Living Room)
-sensor.temperature_158d000149caa5:
-  friendly_name: Temperature (Katerina's Room)
+  friendly_name: Living room humidity
 sensor.humidity_158d000149caa5:
-  friendly_name: Humidity (Katerina's Room)
-  
-## Covers
-cover.test:
-  icon: mdi:blinds
-  display_class: blinds
-  friendly_name: Office Blinds
+  friendly_name: Katerina's room humidity
+sensor.temperature_158d000149caa5:
+  friendly_name: Katerina's room temperature
+light.yeelight_ceiling1_34ce00be27b3:
+  friendly_name: Office ceiling light

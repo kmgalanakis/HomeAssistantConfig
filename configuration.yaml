@@ -18,20 +18,17 @@ homeassistant:
 
 # Enables the frontend
 frontend:
+  themes: !include_dir_merge_named themes/
 
 panel_iframe:
-  configurator:
-    title: Configurator
-    icon: mdi:wrench
-    url: !secret configurator_url
   ide:
     title: IDE
     icon: mdi:code-braces
     url: !secret ide_url
-  noderred:
-    title: Node Red
-    icon: mdi:shuffle-variant
-    url: !secret node_red_url
+  tasmoadmin:
+    title: TasmoAdmin
+    icon: mdi:lightbulb-on
+    url: !secret tasmoadmin_url
     
 mqtt:
   broker: core-mosquitto
@@ -108,18 +105,24 @@ sun:
 
 light: !include light.yaml
 
-switch: !include switch.yaml
+yeelight:
+  devices:
+    192.168.1.9:
+      name: Desk Lamp
 
+switch: !include_dir_merge_list switches/
+
+# Weather prediction
 #weather:
 #  - platform: yweather
 
-# Weather prediction
-#sensor: !include sensor.yaml
+# Sensors
 sensor: !include_dir_merge_list sensors/
 
 # Text to speech
 tts:
-  - platform: google
+  - platform: google_translate
+    service_name: google_say
 
 # Cloud
 cloud:
@@ -129,10 +132,22 @@ group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
 
-device_tracker:
-  - platform: nmap_tracker
-    hosts: 
-      - 192.168.1.24
-      - 192.168.1.29
-    home_interval: 10
-    exclude: 192.168.1.104
+# Example configuration.yaml entry with exclude
+recorder:
+  purge_keep_days: 14
+
+# device_tracker:
+#   - platform: nmap_tracker
+#     hosts: 
+#       - 192.168.1.24
+#       - 192.168.1.29
+#     home_interval: 10
+#     exclude: 192.168.1.104
+
+ffmpeg:
+  ffmpeg_bin: /usr/bin/ffmpeg
+  
+camera:
+  - platform: ffmpeg
+    name: balcony
+    input: !secret digoo_cam_url

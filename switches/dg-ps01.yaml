@@ -1,0 +1,32 @@
+- platform: mqtt
+  name: "Digoo DG-PS01 #1"
+  command_topic: "cmnd/dgps01/power1"
+  state_topic: "stat/dgps01/POWER1"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  retain: false
+- platform: mqtt
+  name: "Digoo DG-PS01 #2"
+  command_topic: "cmnd/dgps01/power2"
+  state_topic: "stat/dgps01/POWER2"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  retain: false
+- platform: mqtt
+  name: "Digoo DG-PS01 #3"
+  command_topic: "cmnd/dgps01/power3"
+  state_topic: "stat/dgps01/POWER3"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  retain: false
+- platform: mqtt
+  name: "Digoo DG-PS01 #4"
+  command_topic: "cmnd/dgps01/power4"
+  state_topic: "stat/dgps01/POWER4"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  retain: false

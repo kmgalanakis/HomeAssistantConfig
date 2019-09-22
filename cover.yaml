@@ -9,3 +9,23 @@
 #   state_closed: "OFF"
 #   optomistic: false
 #   retain: false
+- platform: template
+  covers:
+    tent:
+      friendly_name: "Shade"
+      position_template: "50"
+      open_cover:
+        service: broadlink.send
+        data:
+          host: !secret rm_pro_plus_ip
+          packet: sgD8AJ4yDBgMGBgMDBgMGBgNFw0XDQwYGAwMGQwYDBgMFxgNDBgMGBgMDRgXDA0YDBgXDRgMGA0MGRgMDBgMGA0XDBgYDQwYDBgMGBgMDBgMGAwYGAABI58xDBgNFxgNDBgMGBgMFw0YDQwZGAwMGAwYDBgMGBgMDBkMGBgMDBgYDA0YDBgXDRcNGAwMGBgNDBgMGAwYDBgYDAwYDBgMGRcNDBgMGAwYGAABJJ4yDBgMGBgMDBgMGBgMGAwYDQwYGAwMGQwYDBgMGBcNDBgNFxgMDRgXDQwYDBgYDBgNFw0MGBgMDBgNGAwYDBgYDQwYDBgMGBgMDBgMGAwYGAAF3AAAAAAAAAAAAAAAAA==
+      close_cover:
+        service: broadlink.send
+        data:
+          host: !secret rm_pro_plus_ip
+          packet: sgD4AaIwDRYOFhoLDRcNFxkLGQsZCw4XGQsNFw0XDhYOFhkLDhcNFxkLDhYZCw4WDhYZCxkMGQsOFhkLDhYOFg4WDhgZCw4WDhYZCxkLDhcNFxkLGQABIaEvDhcNFxkLDRcOFhkLGQsZDA4WGQsOFg4WDhcNFhsLDRcOFhoKDhYaCw0XDRcZCxkMGQsNFxkLDhYOFg4WDhYZDA0XDhYZCxkLDhYOFhoKGgABIaIvDhYOFxkLDRcOFhkLGQsZDA0XGQsOFg4WDhYOFhkLDhcOFhkLDhYZCw4WDhYZCxoLGQsOFhoKDhYOFg4WDhcZCw4WDhgZChoLDRcNFxkLGQABKKEvDhYOFhoKDhcNFxkLGQsZDA0XGQsOFg0XDhYOFhkLDhcNGBkLDhYZCw4WDhcZChoLGQsOFhkLDhcNFg4XDRcZCw4WDhYaChkLDhcNFxkLGQABIaExDhYOFhkLDhYOFhoKGgsZCw4WGQsOFw0XDRcNFxkLDRcOFhoLDRcZCw0XDhYZCxkMGQsNFxkLDhYOFg4WDhYZDA0XDRcZCxkLDxYOFhoKGgABIaEvDhYOFhoKDhcNFxkLGQsZDA0XGQsNFw0XDhYOFhkLDhcOFhkLDhYaCw4WDhcZCxkLGgoOFhoKDhcOFg4WDRcZDA0XDRcZCxkLDRcOFhkLGgAF3A==
+      stop_cover:
+        service: broadlink.send
+        data:
+          host: !secret rm_pro_plus_ip
+          packet: sgD8AKAwDhYOFhoKDhcNFxkLGgsZCw4WGgsNFw0XDRcNFxkLDhcNFxkLDRcZCw0XDhYZCxkMGQsNFxkLDhYOFg4WDhYZDA0XGQsNFxkLDhYZCw4WGQABI6AwDhYOFhkLDhYOFhoKGgoaCw4WGQsOFw0WDhcNFxkLDRcOFhkLDhYZCw4XDRcZCxkLGQsOFxkMDRcNFw0XDRcZCw4WGQsOFhoKDhcZCw0XGQABIaEwDRcNFxkLDRcNFxkLGQsZDA0XGgsNFw0XDRcOFhkLDhcOFhkLDhYZCw4WDhYZCxoLGQsOFhoKDhYOFg4WDhYaCw4WGQsOFhkLDhYaCw0XGQAF3AAAAAAAAAAAAAAAAA==

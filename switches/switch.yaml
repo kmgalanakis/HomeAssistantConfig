@@ -1,0 +1,36 @@
+- platform: mqtt
+  name: "Sonoff Switch 01"
+  command_topic: "cmnd/sonoff1/power"
+  state_topic: "stat/sonoff1/POWER"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  retain: false
+- platform: mqtt
+  name: "Sonoff Switch 02"
+  command_topic: "cmnd/sonoff2/power"
+  state_topic: "stat/sonoff2/POWER"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  retain: false
+- platform: mqtt
+  name: "Sonoff Switch 03"
+  command_topic: "cmnd/sonoff3/power"
+  state_topic: "stat/sonoff3/POWER"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  retain: false
+- platform: mqtt
+  name: "Sonoff Switch 04"
+  command_topic: "cmnd/sonoff4/power"
+  state_topic: "stat/sonoff4/POWER"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  retain: false
+- platform: broadlink
+  host: !secret rm_pro_plus_ip
+  mac: '78:0F:77:FD:7F:09'
+  type: rm2_pro_plus
